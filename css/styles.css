@@ -52,6 +52,22 @@ nav li:hover {
   background: #f8f8f8;
 }
 
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(5, 56px);
+  gap: 5px;
+}
+
+.thumbnails li {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.thumbnails li:hover,
+.thumbnails li.current {
+  opacity: 1;
+}
+
 .thumbnails img {
   width: 56px;
 }
