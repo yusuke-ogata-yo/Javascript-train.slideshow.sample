@@ -3,6 +3,31 @@ main {
   margin: 0 auto;
 }
 
+img {
+  /* img要素はインラインレベル要素であるため、フォントのベースラインに合わせられてしまう
+  そのため、インラインレベルのbottomに合わせるように設定する */
+  vertical-align: bottom;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  border: 1px solid #ddd;
+
+}
+
+#play {
+  width: 140px;
+}
+
+#next, #prev {
+  width: 60px;
+}
+
 #main {
   width: 300px;
   height: 200px;
