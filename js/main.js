@@ -79,4 +79,34 @@
     document.querySelectorAll('.thumbnails > li')[target].click();
 
   });
+
+  /**
+   * ナビの前へのエレメント
+   * @type HTMLElement
+   */
+  const prev = document.getElementById('prev');
+  // 前へをクリックした場合の処理
+  prev.addEventListener('click', () => {
+    // 現在のインデックスをデクリメント
+    let target = currentIndex - 1;
+    // 現在のインデックスが、0以下になった場合、imagesの最後の画像を指定
+    if (target < 0) {
+      target = images.length - 1;
+    }
+    // li要素のtarget番目のクリック関数を呼び出す
+    document.querySelectorAll('.thumbnails > li')[target].click();
+
+  });
+
+  function playSlideshow() {
+    setTimeout( () => {
+      next.click();
+      playSlideshow();
+    }, 1000 );
+  }
+
+  const play = document.getElementById('play');
+  play.addEventListener('click', () => {
+    playSlideshow();
+  });
 }
