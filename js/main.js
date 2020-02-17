@@ -61,4 +61,22 @@
     // ul 要素にli要素を追加する
     document.querySelector('.thumbnails').appendChild(li);
   });
+
+  /**
+   * ナビの次へのエレメント
+   * @type HTMLElement
+   */
+  const next = document.getElementById('next');
+  // 次へをクリックした場合の処理
+  next.addEventListener('click', () => {
+    // 現在のインデックスをインクリメント
+    let target = currentIndex + 1;
+    // 現在のインデックスが、画像の枚数より増えた場合、0に戻す
+    if (target === images.length) {
+      target = 0;
+    }
+    // li要素のtarget番目のクリック関数を呼び出す
+    document.querySelectorAll('.thumbnails > li')[target].click();
+
+  });
 }
