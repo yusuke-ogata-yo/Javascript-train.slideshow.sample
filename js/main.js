@@ -98,15 +98,50 @@
 
   });
 
+  /**
+   * タイムアウトのId
+   * @type number
+   */
+  let timeoutId;
+
+  /**
+   * スライドショーの機能。1秒ごとに次の画像を表示する。
+   * @return void
+   */
   function playSlideshow() {
-    setTimeout( () => {
+    timeoutId = setTimeout( () => {
+      // 時間が来たら次の画像を表示
       next.click();
       playSlideshow();
     }, 1000 );
   }
 
+  /**
+   * スライドショーが実行中であればtrue
+   * @type boolean
+   */
+  let isPlaying = false;
+
+  /**
+   * playボタンのエレメント
+   * @type HTMLElement
+   */
   const play = document.getElementById('play');
+  // クリックされた時の処理
   play.addEventListener('click', () => {
-    playSlideshow();
+    // スライドショー中でない場合
+    if (isPlaying === false) {
+      playSlideshow();
+      // play の部分に pause を表示
+      play.textContent = 'Pause';
+    } else {
+      // スライドショー中の場合
+      // タイマーをクリア
+      clearTimeout(timeoutId);
+      // PauseボタンをPlayに表記を変更
+      play.textContent = 'Play';
+    }
+    // スライドショーのフラグを反転させる
+    isPlaying = !isPlaying;
   });
 }
