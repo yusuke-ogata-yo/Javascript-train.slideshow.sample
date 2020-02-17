@@ -46,6 +46,14 @@
     // li 要素をクリックすると、main 領域に画像を表示する
     li.addEventListener('click', () => {
       mainImage.src = image;
+      // li 要素を全て取り出す
+      const thumbnails = document.querySelectorAll('.thumbnails > li');
+      // 現在のthumbnails要素から、currentクラスを削除する
+      thumbnails[currentIndex].classList.remove('current');
+      // currentIndex を新たなindexで更新
+      currentIndex = index;
+      // 現在のthumbnails要素にcurrentクラスを付与する
+      thumbnails[currentIndex].classList.add('current');
     });
 
     // li 要素にimg要素を追加する
